@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Book catalogue project</title>
+	
+    <meta charset="utf-8">
+    <meta name="description" content="Book catalogue project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome to NCOA Test Page</title>
+
+	<style type="text/css">
+		body {
+			font-family: "arial";
+		}
+		
+		label {
+			font-weight: bold;
+		}
+		
+		.container a {
+			color: #000;
+			text-decoration: none;
+		}
+		
+		.itm-container {
+			margin: 10px auto;
+			padding: 10px;
+			border: 1px solid #ccc;
+		}
+		
+		.num-records {
+			text-align: right;
+		}
+	</style>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Script -->
+	<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js" integrity="sha512-uzOpZ74myvXTYZ+mXUsPhDF+/iL/n32GDxdryI2SJronkEyKC8FBFRLiBQ7l7U/PTYebDbgTtbqTa6/vGtU23A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+	<div id="app" class="container-fluid">
+		<h5>{{ brand }} Book Catalogue</h5>
+		<h6 class="num-records">Number of records: {{ count }}</h6>
+		<div>
+			<div v-for="item in dataSet" :key="item.id">
+				<div class="itm-container">
+					<div data-id="id">
+						<label for="id">Id:</label>{{ item.id }}
+					</div>
+					<div>
+						<label for="title">Title:</label>{{ item.title }}
+					</div>
+					<div>
+						<label for="author">Author:</label>{{ item.author }}
+					</div>
+					<div>
+						<label for="genre">Genre:</label>{{ item.genre }}
+					</div>
+					<div>
+						<label for="Published year">Published year:</label>{{ item.published_year }}
+					</div>
+					<div>
+						<label for="description">Description:</label>{{ item.description }}
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	new Vue({
+	  el: '#app',
+	  data: {
+		brand: "NCOA",
+		count: 0,
+		error: null,
+		dataSet: null,
+		loading: false
+	  },
+	  created: function () {
+		// `this` points to the vm instance
+		console.log('brand is: ' + this.brand);
+	  },
+	  mounted: function () {
+		console.log("Vue is mounted.");
+		
+		const getBooksEndPoint = "http://ncoa.localhost/books";
+		
+		// API for get requests to fetch data
+		axios.get(getBooksEndPoint).then(response => {
+			console.log(response.data);
+			this.dataSet = response.data;
+			this.count = response.data.length;
+		})
+		.catch(error => {
+			console.log(error);
+		})
+		.finally(() => this.loading = false);	
+	  }
+	})
+</script>
