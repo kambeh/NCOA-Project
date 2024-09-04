@@ -3,17 +3,18 @@ Codeigniter and Vue.Js
 
 CRUD application API
 =======================
-- http://ncoa.localhost
-- http://ncoa.localhost/books/view/1
-- http://ncoa.localhost/books/update/20
-- http://ncoa.localhost/books/delete/20
-- http://ncoa.localhost/books/create
+- http://ncoa.localhost (GET)
+- http://ncoa.localhost/books/view/1 (GET)
+- http://ncoa.localhost/books/update/20 (POST)
+- http://ncoa.localhost/books/delete/20 (POST)
+- http://ncoa.localhost/books/create (POST)
 
 Challenges faced
 =================
-1. In codeIC, I could not product route like 'localhost/books/2', but later found out that the default controller is 'index', I use it and its works.
-2. My computer could not load, so I have to use an old computer running in Windows XP, the browser is outdated, some of the scripts doesn't run properly, I have to put polyfill scripts to get around the fix.
+1. In Codeigniter, I could not product route like 'localhost/books/2', but later found out that the default controller is 'index', I use it and its works.
+2. My computer could not load, so I have to use an old computer running on Windows XP, the browser is outdated, some of the scripts doesn't run properly, I have to put polyfill scripts to get around the fix.
 3. Needs to find compatible CDN library to install routes in Vue.Js
+4. The solution is incomplete at this stage, but the idea is there, hopefully can finish it later.
 
 Database table schema
 =======================		
