@@ -3,11 +3,11 @@ Codeigniter and Vue.Js
 
 CRUD application API
 =======================
-http://ncoa.localhost
-http://ncoa.localhost/books/view/1
-http://ncoa.localhost/books/update/20
-http://ncoa.localhost/books/delete/20
-http://ncoa.localhost/books/create
+- http://ncoa.localhost
+- http://ncoa.localhost/books/view/1
+- http://ncoa.localhost/books/update/20
+- http://ncoa.localhost/books/delete/20
+- http://ncoa.localhost/books/create
 
 Challenges faced
 =================
